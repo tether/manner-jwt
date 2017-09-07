@@ -21,5 +21,8 @@
   "homepage": "https://github.com/tether/manner-jwt#readme",
   "devDependencies": {
     "tape": "*"
+  },
+  "dependencies": {
+    "manner": "^2.4.0"
   }
 }
