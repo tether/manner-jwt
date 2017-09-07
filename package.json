@@ -23,6 +23,7 @@
     "tape": "*"
   },
   "dependencies": {
+    "jsonwebtoken": "^8.0.0",
     "manner": "^2.4.0"
   }
 }
