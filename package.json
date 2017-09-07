@@ -1,0 +1,25 @@
+{
+  "name": "manner-jwt",
+  "version": "1.0.0",
+  "description": "Authenticate manner services using JWT authentication bearer",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tether/manner-jwt.git"
+  },
+  "keywords": [
+    "tether"
+  ],
+  "author": "Olivier Wietrich, Petrofeed Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tether/manner-jwt/issues"
+  },
+  "homepage": "https://github.com/tether/manner-jwt#readme",
+  "devDependencies": {
+    "tape": "*"
+  }
+}
