@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/tether/manner-jwt#readme",
   "devDependencies": {
+    "server-test": "^1.1.2",
     "tape": "*"
   },
   "dependencies": {

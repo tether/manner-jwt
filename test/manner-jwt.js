@@ -4,10 +4,6 @@
  */
 
 const test = require('tape')
-
-test('this is an example', assert => {
-  assert.plan(1)
-  assert.equal(1 + 2, 3)
-})
-
-  
+const jwt = require('jsonwebtoken')
+const server = require('server-test')
+const manner = require('..')
