@@ -3,6 +3,7 @@
  */
 
 const manner = require('manner')
+const folder = require('manner-folder')
 const jwt = require('jsonwebtoken')
 const salute = require('salute')
 const error = require('http-errors')
@@ -18,7 +19,9 @@ const error = require('http-errors')
  */
 
 module.exports = function (path, secret = process.env.JWT_SECRET) {
-  const service = manner(path)
+  const service = typeof path === 'string'
+      ? folder(path)
+      : manner(path)
   return (req, res) => {
     const payload = token(req)
     if (payload) {

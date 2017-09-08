@@ -50,7 +50,7 @@ test('should mix jwt payload into request query property', assert => {
   }, true)
 })
 
-test('should return uauthorized payload if token is not verified', assert => {
+test('should return unauthorized payload if token is not verified', assert => {
   assert.plan(1)
   const service = manner({
     get: () => {
@@ -64,6 +64,26 @@ test('should return uauthorized payload if token is not verified', assert => {
     const input = service(req, res).on('end', () => {
       assert.equal(res.statusCode, 403)
     })
+    input.pipe(res)
+  }, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }, true)
+})
+
+
+test('should create authenticated service from folder', assert => {
+  assert.plan(1)
+  const service = manner(__dirname + '/api')
+  const token = jwt.sign({
+    name: 'foo'
+  }, process.env.JWT_SECRET)
+  server((req, res) => {
+    const input = service(req, res)
+    input.pipe(concat(data => {
+      assert.equal(data, 'hello world!')
+    }))
     input.pipe(res)
   }, {
     headers: {

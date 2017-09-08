@@ -2,6 +2,6 @@
 
 module.exports = {
   get() {
-    return 'hello world'
+    return 'hello world!'
   }
 }
