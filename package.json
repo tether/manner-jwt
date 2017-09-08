@@ -1,6 +1,6 @@
 {
   "name": "manner-jwt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Authenticate manner services using JWT authentication bearer",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "dependencies": {
     "http-errors": "^1.6.2",
     "jsonwebtoken": "^8.0.0",
-    "manner": "^2.4.1",
-    "salute": "^1.1.1"
+    "manner": "*",
+    "salute": "*"
   }
 }
