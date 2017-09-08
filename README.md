@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/npm/dm/manner-jwt.svg)](http://npm-stat.com/charts.html?package=manner-jwt)
 [![guidelines](https://tether.github.io/contribution-guide/badge-guidelines.svg)](https://github.com/tether/contribution-guide)
 
-Create and authenticate [manner]() service using JWT authentication bearer. 
+Create and authenticate [manner](https://github.com/tether/manner) service using JWT authentication bearer. 
 
 ## Usage
 
