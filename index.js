@@ -48,6 +48,9 @@ module.exports = function (path, secret = process.env.JWT_SECRET) {
  */
 
 function token(req) {
-  const authorization = req.headers.authorization.split(' ')
-  if (authorization[0] === 'Bearer' && authorization.length === 2) return authorization[1]
+  const header = req.headers.authorization
+  if (header) {
+    const authorization = header.split(' ')
+    if (authorization[0] === 'Bearer' && authorization.length === 2) return authorization[1]
+  }
 }
