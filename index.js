@@ -9,7 +9,8 @@ const error = require('http-errors')
 
 
 /**
- * This is a simple description.
+ * Create manner service when bearer token is
+ * verified.
  *
  * @param {String} path
  * @param {String?} secret
@@ -24,15 +25,13 @@ module.exports = function (path, secret = process.env.JWT_SECRET) {
       let obj
       try {
         obj = jwt.verify(payload, secret)
+        req.query = Object.assign(req.query || {}, obj)
+        return service(req, res)
       } catch (e) {
         // not verified
       }
-      if (obj) {
-        req.query = Object.assign(req.query || {}, obj)
-        return service(req, res)
-      }
     }
-    return salute(() => error(403, 'Not authorized'))(req, res)
+    return salute(() => error(403, 'Not Authorized'))(req, res)
   }
 }
 

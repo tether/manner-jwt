@@ -5,13 +5,23 @@
 [![Downloads](https://img.shields.io/npm/dm/manner-jwt.svg)](http://npm-stat.com/charts.html?package=manner-jwt)
 [![guidelines](https://tether.github.io/contribution-guide/badge-guidelines.svg)](https://github.com/tether/contribution-guide)
 
-This is a simple description.
+Create and authenticate [manner]() service using JWT authentication bearer. 
 
 ## Usage
 
 ```js
+const http = require('http')
+const service = require('manner-jwt')
 
+// check authorization header and verify bearer token
+http.createServer((req, res) => {
+  service({
+    get: () => 'hello world!'
+  })(req, res).pipe(res)
+})
 ```
+
+By default, this module will look for the `JWT_SECRET` environment variable but it is possible to pass as second argument the token secret.
 
 ## Installation
 
