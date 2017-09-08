@@ -25,7 +25,9 @@
     "tape": "*"
   },
   "dependencies": {
+    "http-errors": "^1.6.2",
     "jsonwebtoken": "^8.0.0",
-    "manner": "^2.4.1"
+    "manner": "^2.4.1",
+    "salute": "^1.1.1"
   }
 }

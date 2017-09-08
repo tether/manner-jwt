@@ -33,6 +33,7 @@ test('should call service if token is decrypted', assert => {
   }, true)
 })
 
+
 test('should mix jwt payload into request query property', assert => {
   assert.plan(1)
   const service = manner({})
@@ -42,6 +43,28 @@ test('should mix jwt payload into request query property', assert => {
   server((req, res) => {
     service(req, res).pipe(res)
     assert.equal(req.query.name, 'foo')
+  }, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }, true)
+})
+
+test('should return uauthorized payload if token is not verified', assert => {
+  assert.plan(1)
+  const service = manner({
+    get: () => {
+      return 'hello world!'
+    }
+  })
+  const token = jwt.sign({
+    name: 'foo'
+  }, 'youhouu')
+  server((req, res) => {
+    const input = service(req, res).on('end', () => {
+      assert.equal(res.statusCode, 403)
+    })
+    input.pipe(res)
   }, {
     headers: {
       'Authorization': `Bearer ${token}`
