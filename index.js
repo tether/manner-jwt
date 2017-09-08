@@ -17,10 +17,13 @@ const jwt = require('jsonwebtoken')
 module.exports = function (path, secret = process.env.JWT_SECRET) {
   const service = manner(path)
   return (req, res) => {
-    const payload = token()
+    const payload = token(req)
     if (payload) {
       const obj = jwt.verify(payload, secret)
-      if (obj) return service(req, res)
+      if (obj) {
+        req.query = Object.assign(req.query || {}, obj)
+        return service(req, res)
+      }
     }
   }
 }
@@ -35,6 +38,6 @@ module.exports = function (path, secret = process.env.JWT_SECRET) {
  */
 
 function token(req) {
-  const authorization = req.header.authorization.split(' ')
+  const authorization = req.headers.authorization.split(' ')
   if (authorization[0] === 'Bearer' && authorization.length === 2) return authorization[1]
 }

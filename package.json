@@ -4,7 +4,7 @@
   "description": "Authenticate manner services using JWT authentication bearer",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "JWT_SECRET=thisisawesome tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -20,11 +20,12 @@
   },
   "homepage": "https://github.com/tether/manner-jwt#readme",
   "devDependencies": {
+    "concat-stream": "^1.6.0",
     "server-test": "^1.1.2",
     "tape": "*"
   },
   "dependencies": {
     "jsonwebtoken": "^8.0.0",
-    "manner": "^2.4.0"
+    "manner": "^2.4.1"
   }
 }
